@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+env/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Data files (we keep the README, but ignore the actual CSVs)
+data/*.csv
+data/*.parquet
+data/*.xlsx
+!data/README.md
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
