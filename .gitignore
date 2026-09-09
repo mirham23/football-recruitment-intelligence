@@ -16,6 +16,15 @@ data/*.parquet
 data/*.xlsx
 !data/README.md
 
+# Raw datasets (never commit: size + redistribution licensing)
+# - StatsBomb event JSON is ~15 GB under data/statsbomb/data/
+# - Transfermarkt CSVs live in subdirs, which data/*.csv does NOT match
+data/**/*.csv
+data/**/*.parquet
+data/**/*.xlsx
+data/statsbomb/data/
+data/transfermarkt/
+
 # IDE
 .vscode/
 .idea/
