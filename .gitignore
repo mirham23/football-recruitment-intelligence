@@ -8,7 +8,6 @@ env/
 
 # Jupyter
 .ipynb_checkpoints/
-*.ipynb
 
 # Data files (we keep the README, but ignore the actual CSVs)
 data/*.csv

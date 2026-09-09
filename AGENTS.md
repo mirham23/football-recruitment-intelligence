@@ -16,7 +16,9 @@ Early Phase 1 (Data Science MVP). Empty `src/` and `tests/` packages — no prod
 pip install -r requirements.txt
 ```
 
-No linter, formatter, typecheck, or test runner is configured yet. There are no tests to run.
+Tests: `pytest tests/ -q` (requires `pip install -r requirements.txt` for pytest + pandas).
+
+No linter, formatter, or typecheck is configured yet.
 
 ## Conventions
 
