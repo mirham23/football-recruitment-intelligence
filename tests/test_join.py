@@ -39,6 +39,13 @@ def test_normalize_strips_accents_case_punct():
     assert normalize_name("  Sergio Busquets i Burgos! ") == "sergio busquets i burgos"
 
 
+def test_normalize_splits_hyphenated_surnames():
+    # Fellaini-Bakkioui glued into one token was unmatchable (notebook 05).
+    assert normalize_name("Marouane Fellaini-Bakkioui") == "marouane fellaini bakkioui"
+    assert normalize_name("Alexandre Dimitri Song-Billong") == "alexandre dimitri song billong"
+    assert token_subset("marouane fellaini bakkioui", "marouane fellaini")
+
+
 # ---- club map + gate ----
 
 def test_club_map_covers_grounded_entries():
@@ -105,6 +112,18 @@ def test_nickname_dict_has_verified_entries():
     assert NICKNAMES["Francisco Román Alarcón Suárez"] == "Isco"
     assert NICKNAMES["Kléper Laveran Lima Ferreira"] == "Pepe"
     assert NICKNAMES["Francisco Casilla Cortés"] == "Kiko Casilla"
+    # Premier League supplement: 15 entries, all verified both sides.
+    assert len(NICKNAMES) == 18
+    assert NICKNAMES["Francesc Fàbregas i Soler"] == "Cesc Fàbregas"
+    assert NICKNAMES["Bamidele Alli"] == "Dele Alli"
+    assert NICKNAMES["John Michael Nchekwube Obinna"] == "Mikel John Obi"
+    assert NICKNAMES["Jonathan Grant Evans"] == "Jonny Evans"
+
+
+def test_nickname_keys_are_full_legal_names():
+    # Keys must carry surnames (never bare common names) so same-name
+    # collisions elsewhere (e.g. other Evanses) cannot match through the dict.
+    assert len(normalize_name("Jonathan Grant Evans").split()) > 2
 
 
 # ---- disambiguation cascade ----
