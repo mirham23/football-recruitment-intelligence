@@ -13,6 +13,8 @@ CLUB_MAP: dict[str, str] = {
     "Athletic Club": "Athletic Bilbao",
     "Celta Vigo": "Celta de Vigo",
     "Atlético Madrid": "Atlético de Madrid",
+    # Bundesliga (notebook 06 audit): Berlin and BSC share no containment.
+    "Hertha Berlin": "Hertha BSC",
 }
 
 

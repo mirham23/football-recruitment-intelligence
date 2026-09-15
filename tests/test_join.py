@@ -53,6 +53,9 @@ def test_club_map_covers_grounded_entries():
     assert CLUB_MAP["Athletic Club"] == "Athletic Bilbao"
     assert CLUB_MAP["Celta Vigo"] == "Celta de Vigo"
     assert CLUB_MAP["Atlético Madrid"] == "Atlético de Madrid"
+    assert CLUB_MAP["Hertha Berlin"] == "Hertha BSC"
+    # Bayer needs no entry: whitespace collapsing makes containment hold.
+    assert clubs_agree("Bayer Leverkusen", "Bayer 04 Leverkusen")
 
 
 def test_map_club_passes_unknown_through():
@@ -70,6 +73,10 @@ def test_clubs_agree_rejects_real_mismatches():
     # Llorente (Sevilla) vs Torres (Atletico): the gate must hold.
     assert not clubs_agree("Sevilla", "Atlético de Madrid")
     assert not clubs_agree("Sporting Gijón", "Celta de Vigo")
+    # Notebook 06 audit: shared "Borussia" prefix, distinct clubs.
+    # Prefix matching must never replace the containment gate.
+    assert not clubs_agree("Borussia Dortmund", "Borussia Mönchengladbach")
+    assert not clubs_agree("Borussia Mönchengladbach", "Borussia Dortmund")
 
 
 # ---- token subset ----
