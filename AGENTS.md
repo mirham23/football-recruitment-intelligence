@@ -2,7 +2,12 @@
 
 ## Project state
 
-Early Phase 1 (Data Science MVP). Empty `src/` and `tests/` packages — no production code yet. Active work is in Jupyter notebooks (gitignored).
+Late Phase 1 (Data Science MVP): modeling done, Day-5 README + push pending.
+
+- `src/join/` — StatsBomb↔Transfermarkt entity resolution (normalize, club map, nicknames, cascade, fuzzy). Tested.
+- `src/models/` — value-model prep/train/evaluate/artifact IO (pure functions; DB reads stay notebook-side). Tested.
+- `sql/schema.sql` + `scripts/load_data.py` — Postgres `players` + `player_season` tables, idempotent loader.
+- `notebooks/01–09` — committed with outputs; re-run downstream notebooks after any `src/` change before committing.
 
 ## Data
 
@@ -23,5 +28,5 @@ No linter, formatter, or typecheck is configured yet.
 ## Conventions
 
 - Python, pandas, scikit-learn, xgboost, shap stack.
-- Notebooks for exploration (`.ipynb` — gitignored). `src/` for reusable modules.
+- Notebooks for exploration (committed with outputs at milestones). `src/` for reusable modules.
 - No build system, no CI, no pre-commit hooks.
